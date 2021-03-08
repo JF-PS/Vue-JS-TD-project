@@ -5,13 +5,11 @@
             <div>
                 <input v-model="infoSort" placeholder="Choose movie" />
             </div>
-           
             <ul>
-                <li class="movie" v-for="(movie, i) in movies" v-bind:key="i" v-bind:title="movie.title">
-                    <movie_item v-bind:movie="movie" v-on:viewInfo="infoView"></movie_item>
+                <li class="movie" v-for="(movie, i) in movies" v-bind:key="i" v-on:click="movieInfo(i)" v-bind:title="movie.title">
+                    <movie_item v-bind:movie="movie"></movie_item><br>
                 </li>
             </ul>
-
             <div>
                 <button><router-link :to="{ name: 'AddMovie', params: { movie: movie }}">add Movie</router-link></button>
             </div>
@@ -36,9 +34,9 @@ export default {
         };
     },
     methods: {
-        infoView: function(aMovie) {
-            aMovie.info = aMovie.info ? false : true;
-        },
+        movieInfo: function(id) {
+            this.$router.push({ name: 'ReadMovie', params: { idMovie: id } });
+        }
     },
     watch: {
         infoSort: function(){

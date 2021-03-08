@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Testroute from '../components/Testroute'
 import MovieManagement from '../components/MovieManagement'
 import MovieEdition from '../components/MovieEdition'
+import MovieReading from '../components/MovieReading'
 
 Vue.use(VueRouter)
 
@@ -24,8 +25,7 @@ export const routes = [
     component: Testroute
   },
   {
-    path: '/edition',
-    props: true,
+    path: '/movie/:idMovie/edition',
     name: 'MovieEdition',
     component: MovieEdition
   },
@@ -35,6 +35,11 @@ export const routes = [
     name: 'AddMovie',
     component: MovieEdition
   },
+  {
+    path: '/movie/:idMovie',
+    name: 'ReadMovie',
+    component: MovieReading
+  }
 ]
 
 const router = new VueRouter({
