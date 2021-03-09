@@ -8,7 +8,6 @@
             <h3 v-if="change">Update {{ myMovie.title }}.</h3>
 
         <div class="container">
-            <form action="/action_page.php">
                 <div class="row">
                     <div class="col-25">
                         <label for="fname">Movie Title</label>
@@ -66,11 +65,9 @@
                         <input type="url" v-model="myMovie.poster" placeholder="poster url" class="input-larg" />
                     </div>
                 </div>
-            </form>
         </div>
 
          <div class="container">
-            <form action="/action_page.php">
                 <div class="row">
                     <div class="col-25">
                         <label for="fname">Director First Name</label>
@@ -108,7 +105,6 @@
                     <button class="buttonValide" v-if="movie" v-on:click="valid">Valide Changes</button>
                     <button class="buttonValide" v-else       v-on:click="add(myMovie)">Add</button>
                 </div>
-            </form>
         </div>
         </div>
     </div>
@@ -147,13 +143,55 @@ export default {
             this.myMovie = movieToUpdate;
         },
         add: function(newMovie){
-            if(newMovie.title == "" || newMovie.date == "" || newMovie.title == "" || newMovie.synopsis == "" || newMovie.langue == "" || newMovie.poster == "" || newMovie.genre == "" || newMovie.director.firstname == "" || newMovie.director.lastname == "" || newMovie.director.nationality == "" || newMovie.director.birthday == ""){
-                alert(" Vous devez remplir tous les champs avant de validé !");
-            }
-            else{
+            if(!this.checkEmpty(newMovie)){
                 this.movies.push(newMovie);
                 this.valid();
             }
+        },
+        checkEmpty: function(movie){
+           var checkempty = [];
+
+           if(movie.title == ""){
+               checkempty.push("le Titre du Film");
+           }
+           if(movie.date == ""){
+               checkempty.push("la Date du Film");
+           }
+           if(movie.synopsis == ""){
+               checkempty.push("le Synopsis du Film");
+           }
+           if(movie.langue == ""){
+               checkempty.push("la VO du Film");
+           }
+           if(movie.poster == ""){
+               checkempty.push("l'image du Film");
+           }
+           if(movie.genre == ""){
+               checkempty.push("le genre du Film");
+           }
+           if(movie.director.firstname == ""){
+               checkempty.push("le Prénom du Réalisateur");
+           }
+           if(movie.director[0].lastname == ""){
+               checkempty.push("le Nom du Réalisateur");
+           }
+           if(movie.director[0].nationality == ""){
+               checkempty.push("la nationalité du du Réalisateur");
+           }
+           if(movie.director[0].birthday == ""){
+               checkempty.push("La date de naissance du Réalisateur");
+           }
+
+           if(checkempty.length > 0){
+                var empty = "Il manque : ";
+                checkempty.forEach(element => 
+                    empty += element + ","
+                );
+                empty += " vous devez remplir tout les champs !"
+                alert(empty);
+                return true;
+           }
+            return false;
         },
         remove: function() {
             this.movies.splice(parseInt(this.$route.params.idMovie), 1);
