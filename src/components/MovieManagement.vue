@@ -4,8 +4,9 @@
             <div>
                 <h1>Movies managers: </h1><p>({{ nbMovie }} movies)</p>
             </div>
-            <div>
-                <input v-model="infoSort" placeholder="Choose movie" /><button><router-link :to="{ name: 'AddMovie'}">add Movie</router-link></button>
+            <div class="container-aligne">
+                <button class="buttonValide" v-on:click="goToAddMovie()">&#128250; Add Movie </button>
+                <input v-model="infoSort" placeholder="Choose movie" />
             </div> 
             <div class="row-padding padding-16 positioning-center">
                 <div class="movie-info" v-for="(movie, i) in movies" v-bind:key="i" v-on:click="movieInfo(i)" v-bind:title="movie.title">
@@ -34,11 +35,19 @@ export default {
     methods: {
         movieInfo: function(id) {
             this.$router.push({ name: 'ReadMovie', params: { idMovie: id } });
+        },
+        goToAddMovie: function(){
+            this.$router.push({ name: 'AddMovie'});
         }
     },
     watch: {
         infoSort: function(){
-            this.movies = window.shared_data.movies.filter(film => film.title.includes(this.infoSort) || film.date.includes(this.infoSort) || film.director[0].lastname.includes(this.infoSort) || film.director[0].firstname.includes(this.infoSort));
+            this.movies = window.shared_data.movies.filter(film => 
+                film.title.toLowerCase().includes(this.infoSort.toLowerCase()) 
+                || film.date.includes(this.infoSort) 
+                || film.director[0].lastname.toLowerCase().includes(this.infoSort.toLowerCase()) 
+                || film.director[0].firstname.toLowerCase().includes(this.infoSort.toLowerCase())
+            );
         }
     },
     computed: {
@@ -51,5 +60,6 @@ export default {
     }
 };
 </script>
+
 
 

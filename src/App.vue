@@ -493,10 +493,6 @@ a {
 	}
 }
 
-
-
-
-
 .size-large {
 	font-size: 24px!important
 }
@@ -525,15 +521,15 @@ a {
 	border-right: 6px solid #ccc!important
 }
 
-movies-padding-small {
+.movies-padding-small {
 	padding: 4px 8px!important
 }
 
-movies-padding {
+.movies-padding {
 	padding: 8px 16px!important
 }
 
-movies-padding-large {
+.movies-padding-large {
 	padding: 12px 24px!important
 }
 
@@ -542,39 +538,39 @@ movies-padding-large {
 	padding-bottom: 16px!important
 }
 
-movies-padding-24 {
+.movies-padding-24 {
 	padding-top: 24px!important;
 	padding-bottom: 24px!important
 }
 
-movies-padding-32 {
+.movies-padding-32 {
 	padding-top: 32px!important;
 	padding-bottom: 32px!important
 }
 
-movies-padding-48 {
+.movies-padding-48 {
 	padding-top: 48px!important;
 	padding-bottom: 48px!important
 }
 
-movies-padding-64 {
+.movies-padding-64 {
 	padding-top: 64px!important;
 	padding-bottom: 64px!important
 }
 
-movies-padding-top-64 {
+.movies-padding-top-64 {
 	padding-top: 64px!important
 }
 
-movies-padding-top-48 {
+.movies-padding-top-48 {
 	padding-top: 48px!important
 }
 
-movies-padding-top-32 {
+.movies-padding-top-32 {
 	padding-top: 32px!important
 }
 
-movies-padding-top-24 {
+.movies-padding-top-24 {
 	padding-top: 24px!important
 }
 
@@ -590,8 +586,6 @@ movies-padding-top-24 {
 	color: #000!important;
 	background-color: #ccc!important
 }
-
-
 
 .color-white {
 	color: #000!important;
@@ -651,5 +645,86 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	margin-top: 8px;
 	margin-right: 16px;
 	font-size: 17px;
+}
+.container-aligne{
+	display:flex;
+}.container-aligne-center{
+	display:flex;
+	align-items: center;
+  justify-content: center;
+}
+#edition{
+	font-size: 30px;
+	cursor:  pointer;
+}
+
+input[type=text], select, textarea {
+  width: 100% !important;
+  padding: 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  resize: vertical !important;
+}
+
+label {
+  padding: 12px 12px 12px 0 !important;
+  display: inline-block !important;
+}
+
+button {
+  color: white !important;
+  padding: 12px 20px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  float: right !important;
+}
+
+.buttonValide{
+	background-color: #4CAF50 !important;
+}
+.buttonRemove{
+	background-color: rgb(196, 36, 36) !important;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px !important;
+  background-color: #f2f2f2 !important;
+  padding: 20px !important;
+}
+
+.col-25 {
+  float: left !important;
+  width: 25% !important;
+  margin-top: 6px !important;
+}
+
+.col-75 {
+  float: left !important;
+  width: 75% !important;
+  margin-top: 6px !important;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "" !important;
+  display: table !important;
+  clear: both !important;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+}
+
+.input-larg{
+	width:100%;
 }
 </style>
