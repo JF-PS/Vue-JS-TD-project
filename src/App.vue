@@ -1,5 +1,3 @@
-
-
 <template>
   <div id="app">
     <header_composant></header_composant>

@@ -54,9 +54,6 @@ export default {
         nbMovie: function() {
             return this.movies.length;
         },
-    },
-    mounted: function() {
-        console.log(this.movies);
     }
 };
 </script>

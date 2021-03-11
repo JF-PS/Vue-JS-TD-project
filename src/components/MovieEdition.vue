@@ -1,12 +1,9 @@
 <template>
     <div class="movie-container movies-content movies-padding marg-max-movies">
-    <h1 v-if="movie">{{movie.title}} ({{movie.date}})</h1>
+    <h1 v-if="movie">Edite {{movie.title}} ({{movie.date}})</h1>
     <h1 v-else>Add new movie :</h1>
-        <button class="buttonValide" v-if="movie && !change" v-on:click="update(movie)">Update</button>
-        <button class="buttonRemove" v-if="movie" v-on:click="remove()">Delete</button>
-        <div v-if="change || !movie">
-            <h3 v-if="change">Update {{ myMovie.title }}.</h3>
-
+    <button class="buttonRemove" v-if="movie" v-on:click="remove()">Delete</button>
+        
         <div class="container">
                 <div class="row">
                     <div class="col-25">
@@ -66,7 +63,6 @@
                     </div>
                 </div>
         </div>
-
          <div class="container">
                 <div class="row">
                     <div class="col-25">
@@ -105,9 +101,9 @@
                     <button class="buttonValide" v-if="movie" v-on:click="valid">Valide Changes</button>
                     <button class="buttonValide" v-else       v-on:click="add(myMovie)">Add</button>
                 </div>
+            </div>
         </div>
-        </div>
-    </div>
+
 </template>
 
 <script>
@@ -116,7 +112,6 @@ export default {
     name: "movie_edition_item",
      data: function() {
         return {
-            change: false,
             myMovie: 
             {
                 title: "",       
@@ -138,10 +133,6 @@ export default {
         };
     },
     methods: {
-        update: function(movieToUpdate) {
-            this.change = true;
-            this.myMovie = movieToUpdate;
-        },
         add: function(newMovie){
             if(!this.checkEmpty(newMovie)){
                 this.movies.push(newMovie);
@@ -194,13 +185,22 @@ export default {
             return false;
         },
         remove: function() {
-            this.movies.splice(parseInt(this.$route.params.idMovie), 1);
-            this.valid();
+            var comfirm = confirm("Attention vous êtes sur le point de supprimer le film " + this.movie.title + ", cette action est définitive. Êtes-vous certain de vouloir continuer ? ");
+            if(comfirm){
+                this.movies.splice(parseInt(this.$route.params.idMovie), 1);
+                this.valid();
+            }
         },
         valid: function() {
             this.myMovie.note = parseInt(this.myMovie.note);
             this.$router.push({ name: 'MovieManagement' });
         }
-    }
+    },
+    mounted() {
+        if(this.movie){
+                this.change = true;
+                this.myMovie = this.movie;
+            }
+    },
 };
 </script>
