@@ -1,8 +1,8 @@
 <template>
-    <div class="movie-container movies-content  movies-padding-32 positioning-center marg-max-movies">  
+    <div  class=" container movie-container movies-content  movies-padding-32 positioning-center marg-max-movies">  
         <div class="container-aligne-center">
             <h1>{{movie.title}} ({{movie.date}})</h1>
-            <span id="edition" title="Editer le film" v-on:click="goToMovieEdition()">  &#9997; </span>
+            <span id="edition" title="Editer le film" v-on:click="goToMovieEdition()">  &#128394; </span>
         </div>
         
         <h3 >Genre : {{movie.genre}} </h3>
@@ -17,6 +17,7 @@
             <h6><i>{{ movie.director[0].nationality.toUpperCase() }} {{ movie.director[0].birthday.toUpperCase() }}</i></h6>
             <p>{{ movie.synopsis }}</p>
         </div>
+        <button class="buttonValide input-larg" title="Editer le film" v-on:click="goToMovieEdition()"> Edition &#128394;</button>
     </div>
 </template>
 
